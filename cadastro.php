@@ -1,38 +1,7 @@
 <?php
 require_once "config.php";
-?>
-<html>
+require_once "cadastro.php";
 
-<head>
-<meta http-equiv-"Content-Type" content="text/html, charset-utf-8">
-    <title>Sistema de Cadastro</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-
-<body>
-
-<div id="cadastro">
-    <form method="post" action="?go=enviar">
-Nome: <input type="text" name="nome" id="nome" class="txt" /> <br /><br />
-E-mail: <input type="text" name="email" id="email" class="txt" /> <br /><br />
-Telefone: <input type="text" name="telefone" id="telfone" class="txt" /> <br /><br />
-Endereço: <input type="text" name="endereco" id="endereco" class="txt" /> <br /><br />
-Número: <input type="text" name="numero" id="numero" class="txt" /> <br /><br />
-Bairro: <input type="text" name="bairro" id="bairrp" class="txt" /> <br /><br />
-Cep: <input type="text" name="cep" id="cep" class="txt" maxlength="9" /> <br /><br />
-Ativo <input type="checkbox" name="positivo" value="Sim" />Sim<input type="checkbox" name="negativo" value="Nao" />Não <br /><br />
-     
-     <input type="submit" name="enviar" value="Enviar" id="btnCad" />
-    </form> 
-<?php
-
-?>   
-</div>
-</body>
-
-</html>
-
-<?php
 if(@$_GET['go'] == 'enviar'){
     $nome=$_POST['nome'];
     $email=$_POST['email'];
@@ -69,7 +38,7 @@ echo $_POST['negativo'];
         if($query1 == 1){
             echo "<script>alert('Usuário já cadastrado.'); history.back();</script>";
         }else{
-            mysql_query("INSERT INTO usuarios (nome, email, telefone, endereco, numero, bairro, cep, positivo, negativo) VALUES ('$nome', '$email', '$telefone', '$endereco', '$numero', '$bairro', '$cep', '$positivo', '$negativo')");
+            mysql_query(INSERT INTO `usuarios` (nome, email, telefone, endereco, numero, bairro, cep, positivo, negativo) VALUES ('$nome', '$email', '$telefone', '$endereco', '$numero', '$bairro', '$cep', '$positivo', '$negativo'));
             echo"<scrip>alert ('Cadastro efetuado com sucesso!');</script>";
             header ("location: cadastro.php");
         }
@@ -77,5 +46,4 @@ echo $_POST['negativo'];
     }   
     
 }
-
 ?>

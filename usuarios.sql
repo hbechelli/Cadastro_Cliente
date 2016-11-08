@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL auto_increment,
   `nome` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `telefone` varchar(11) NOT NULL,
@@ -34,21 +35,19 @@ CREATE TABLE `usuarios` (
   `numero` varchar(10) NOT NULL,
   `bairro` varchar(100) NOT NULL,
   `cep` varchar(9) NOT NULL,
-  `positivo` int(100) NOT NULL,
-  `negativo` int(100) NOT NULL
+  `login` varchar(40) NOT NULL default '',
+  `senha` varchar(40) NOT NULL default '',
+  `postar` enum('positivo', 'negativo') NOT NULL default 'positivo'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`nome`, `email`, `telefone`, `endereco`, `numero`, `bairro`, `cep`, `positivo`, `negativo`) VALUES
-('Ana', 'a.merroto@hotmail.com', '41 8789-900', 'ServidÃ£o das Flores', 's/n', 'Floresta', '89676-456', 0, 0),
-('Marcelo Cabral', 'cabral@brturbo.com.br', '55 33439009', 'Rua Dos TrÃªs', '3', 'Costa Sul', '87789-098', 0, 0),
-('Higor Bechelli de Oliveira', 'hbechelli@gmail.com', '4799151476', 'Rua Rolf F. Penski', '250', 'Vila Nova', '89237-813', 0, 0),
-('Maria das Couves', 'maria.couve@hotmail.com', '45 78901234', 'Av. Querubim', '334', 'Centro', '89098-000', 0, 0),
-('Eduardo Mattos', 'mattos@gmail.com', '46 99879877', 'Rua Toda a vida irÃ¡s reto', '666', 'Vila Pequena', '88449-090', 0, 0),
-('Paulo Dallagno', 'paulo_aur2@hotmail.com', '47 99151476', 'Rua Rolf F. Pensk', '250', 'Vila Nova', '89237-813', 0, 0);
+INSERT INTO `usuarios` (`id`,`nome`, `email`, `telefone`, `endereco`, `numero`, `bairro`, `cep`, `login`, `senha`, `postar`) VALUES
+(1, 'Ana', 'a.merroto@hotmail.com', '41 8789-900', 'ServidÃ£o das Flores', 's/n', 'Floresta', '89676-456', 'a.meroto', '123456', 'positivo'),
+(2, 'Marcelo Cabral', 'cabral@brturbo.com.br', '55 33439009', 'Rua Dos TrÃªs', '3', 'Costa Sul', '87789-098', 'cabral', '123456', 'negativo'),
+(3, 'Higor Bechelli de Oliveira', 'hbechelli@gmail.com', '4799151476', 'Rua Rolf F. Penski', '250', 'Vila Nova', '89237-813','hbechelli', '123456',  'negativo');
 
 --
 -- Indexes for dumped tables
