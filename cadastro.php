@@ -1,6 +1,6 @@
 <?php
 require_once "config.php";
-require_once "cadastro.php";
+require_once "cadastro.html";
 
 if(@$_GET['go'] == 'enviar'){
     $nome=$_POST['nome'];
